@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>동진쎄미켐 기업분석 리포트 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root {
+  --bg: #0a0d12;
+  --surface: #111520;
+  --surface2: #161b27;
+  --border: #1e2535;
+  --accent: #3b82f6;
+  --accent2: #06b6d4;
+  --accent3: #f59e0b;
+  --danger: #ef4444;
+  --green: #22c55e;
+  --text: #e2e8f0;
+  --text-dim: #64748b;
+  --text-mid: #94a3b8;
+  --mono: 'DM Mono', monospace;
+  --serif: 'Pretendard Variable', 'Pretendard', sans-serif;
+  --display: 'Fraunces', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: .4;
+}
+
+/* ── GRID LINES ── */
+.grid-bg {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,13,18,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px;
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex; gap: 0; list-style: none;
+}
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  padding: 0 14px;
+  height: 56px;
+  display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+}
+.nav-links a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+.nav-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent2);
+  background: rgba(6,182,212,.1);
+  border: 1px solid rgba(6,182,212,.3);
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: .1em;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 120px 80px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block; width: 40px; height: 1px;
+  background: var(--accent);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(40px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 60%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-title em {
+  font-style: normal;
+  font-weight: 300;
+}
+
+.hero-sub {
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 36px);
+  color: var(--text-mid);
+  font-weight: 300;
+  margin-bottom: 48px;
+}
+
+.hero-meta {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.hero-stat { display: flex; flex-direction: column; gap: 4px; }
+.hero-stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.hero-stat-value {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-stat-value.up { color: var(--green); }
+.hero-stat-value.accent { color: var(--accent); }
+
+/* large decorative number */
+.hero-deco {
+  position: absolute; right: -20px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--display);
+  font-size: 40vw;
+  font-weight: 700;
+  color: rgba(59,130,246,.03);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -.05em;
+}
+
+/* ── LAYOUT ── */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative; z-index: 1;
+}
+
+/* ── SECTION ── */
+section {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+
+.section-header {
+  display: flex; align-items: baseline; gap: 20px;
+  margin-bottom: 64px;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.section-title span { color: var(--accent); }
+
+/* ── CARDS ── */
+.card-grid { display: grid; gap: 1px; background: var(--border); }
+.card-grid-1 { grid-template-columns: 1fr; }
+.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--surface);
+  padding: 32px;
+  transition: background .2s;
+}
+.card:hover { background: var(--surface2); }
+
+.card-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.card-value {
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.card-value.green { color: var(--green); }
+.card-value.blue { color: var(--accent); }
+.card-value.amber { color: var(--accent3); }
+.card-value.red { color: var(--danger); }
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ── KV TABLE ── */
+.kv-table { width: 100%; border-collapse: collapse; }
+.kv-table tr { border-bottom: 1px solid var(--border); }
+.kv-table tr:last-child { border-bottom: none; }
+.kv-table td {
+  padding: 14px 0;
+  font-size: 14px;
+  vertical-align: top;
+}
+.kv-table td:first-child {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: .08em;
+  width: 220px;
+  padding-right: 24px;
+  padding-top: 16px;
+}
+
+/* ── DATA TABLE ── */
+.data-table-wrap { overflow-x: auto; }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table thead tr {
+  border-bottom: 2px solid var(--accent);
+}
+.data-table thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+  font-weight: 400;
+}
+.data-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.data-table tbody tr:hover { background: var(--surface2); }
+.data-table tbody td {
+  padding: 13px 16px;
+  color: var(--text-mid);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.data-table tbody td:first-child { color: var(--text); font-weight: 600; }
+.pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: .08em;
+}
+.pill-green { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+.pill-blue { background: rgba(59,130,246,.15); color: var(--accent); border: 1px solid rgba(59,130,246,.3); }
+.pill-amber { background: rgba(245,158,11,.15); color: var(--accent3); border: 1px solid rgba(245,158,11,.3); }
+.pill-red { background: rgba(239,68,68,.15); color: var(--danger); border: 1px solid rgba(239,68,68,.3); }
+.pill-dim { background: rgba(100,116,139,.15); color: var(--text-dim); border: 1px solid rgba(100,116,139,.3); }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 1px; background: var(--border);
+}
+.tl-item { position: relative; padding-bottom: 40px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -37px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.tl-dot.amber { background: var(--accent3); box-shadow: 0 0 0 1px var(--accent3); }
+.tl-dot.green { background: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.tl-dot.red { background: var(--danger); box-shadow: 0 0 0 1px var(--danger); }
+.tl-year {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+.tl-content {
+  font-size: 14px;
+  color: var(--text-mid);
+}
+.tl-content strong { color: var(--text); font-weight: 600; }
+
+/* ── RISK CARDS ── */
+.risk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--border);
+}
+.risk-col-header {
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.risk-col-header-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.risk-col-opp { background: rgba(34,197,94,.07); border-right: 1px solid var(--border); }
+.risk-col-opp .risk-col-header-label { color: var(--green); }
+.risk-col-risk { background: rgba(239,68,68,.07); }
+.risk-col-risk .risk-col-header-label { color: var(--danger); }
+.risk-col-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.risk-col-opp .risk-col-dot { background: var(--green); }
+.risk-col-risk .risk-col-dot { background: var(--danger); }
+.risk-card { background: var(--surface); padding: 28px 32px; border-bottom: 1px solid var(--border); }
+.risk-card:last-child { border-bottom: none; }
+.risk-card:hover { background: var(--surface2); }
+.risk-col-opp .risk-card { border-right: 1px solid var(--border); }
+.risk-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
+}
+.risk-icon {
+  width: 32px; height: 32px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.risk-icon.pos { background: rgba(34,197,94,.1); }
+.risk-icon.neg { background: rgba(239,68,68,.1); }
+.risk-title { font-weight: 700; font-size: 14px; }
+.risk-body { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+/* ── PR TECH SECTION ── */
+.pr-ladder {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border);
+}
+.pr-rung {
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 120px 100px 1fr 200px;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  transition: background .2s;
+  cursor: default;
+}
+.pr-rung:hover { background: var(--surface2); }
+.pr-rung.active { background: rgba(59,130,246,.08); }
+.pr-rung > div { padding: 18px 20px; border-right: 1px solid var(--border); }
+.pr-rung > div:last-child { border-right: none; }
+.pr-gen {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+.pr-nm {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent2);
+}
+.pr-desc { font-size: 13px; color: var(--text-mid); }
+.pr-status { display: flex; flex-direction: column; gap: 4px; }
+
+/* ── COMPETITOR TABLE ── */
+.comp-wrap { overflow-x: auto; }
+
+/* ── VALUATION ── */
+.val-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 2px;
+}
+.val-cell {
+  background: var(--surface);
+  padding: 24px 20px;
+  transition: background .2s;
+}
+.val-cell:hover { background: var(--surface2); }
+.val-cell.highlight { background: rgba(59,130,246,.1); }
+.val-company {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.val-row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 10px; }
+.val-key {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.val-num {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* ── SIGNAL BOX ── */
+.signal-box {
+  border: 1px solid var(--border);
+  padding: 40px 48px;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+.signal-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.signal-text {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.6;
+  color: var(--text);
+}
+.signal-text strong {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── FOOTNOTE ── */
+.source-note {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .06em;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── PROGRESS BAR ── */
+.pbar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.pbar-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-mid);
+  width: 200px;
+  flex-shrink: 0;
+}
+.pbar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.pbar-val {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-brand {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+.footer-disclaimer {
+  font-size: 11px;
+  color: var(--text-dim);
+  max-width: 400px;
+  line-height: 1.7;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { padding: 100px 24px 60px; }
+  .wrapper { padding: 0 20px; }
+  .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .val-grid { grid-template-columns: repeat(2, 1fr); }
+  nav .nav-links { display: none; }
+  .pr-rung { grid-template-columns: 1fr 1fr; }
+  .pr-rung > div:nth-child(3) { grid-column: span 2; }
+  .pr-rung > div:nth-child(4) { grid-column: span 2; }
+  .risk-grid { grid-template-columns: 1fr; }
+  .risk-col-opp .risk-card { border-right: none; }
+  .risk-col-opp { border-bottom: 1px solid var(--border); }
+}
+@media (max-width: 600px) {
+  .card-grid-2 { grid-template-columns: 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr; }
+  .card-grid-4 { grid-template-columns: 1fr; }
+  .val-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 48px; }
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DJSC · 005290</div>
+  <ul class="nav-links">
+    <li><a href="#overview">개요</a></li>
+    <li><a href="#financials">재무</a></li>
+    <li><a href="#pr-tech">PR 기술</a></li>
+    <li><a href="#us-ops">미국 사업</a></li>
+    <li><a href="#risks">리스크</a></li>
+    <li><a href="#valuation">밸류에이션</a></li>
+  </ul>
+  <span class="nav-tag">2025 FY 기준</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco">53</div>
+  <div class="hero-eyebrow">기업분석 리포트 · 동진쎄미켐</div>
+  <h1 class="hero-title">반도체 소재의 미래</h1>
+  <p class="hero-sub">EUV·미국 온쇼어링·이차전지 삼각 성장축</p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <span class="hero-stat-label">2025 매출</span>
+      <span class="hero-stat-value accent">1조 1,941억</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-label">영업이익률</span>
+      <span class="hero-stat-value up">14.4%</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-label">R&D / 매출</span>
+      <span class="hero-stat-value">5.52%</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-label">반도체 가동률</span>
+      <span class="hero-stat-value up">97.3%</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-label">사업보고서 기준일</span>
+      <span class="hero-stat-value">2026. 03. 19</span>
+    </div>
+  </div>
+</section>
+
+<!-- 1. OVERVIEW -->
+<section id="overview">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">회사 <span>개요</span></h2>
+    </div>
+
+    <div class="card-grid card-grid-4 reveal" style="margin-bottom:1px">
+      <div class="card">
+        <div class="card-label">설립</div>
+        <div class="card-value blue" style="font-size:28px">1967</div>
+        <div class="card-desc">발포제 국내 최초 개발로 출발한 57년 역사의 정밀화학 기업</div>
+      </div>
+      <div class="card">
+        <div class="card-label">코스닥 상장</div>
+        <div class="card-value blue" style="font-size:28px">1999</div>
+        <div class="card-desc">코드 005290 / 시총 약 2.6조원</div>
+      </div>
+      <div class="card">
+        <div class="card-label">글로벌 거점</div>
+        <div class="card-value blue" style="font-size:28px">20개</div>
+        <div class="card-desc">미국·대만·스웨덴 해외법인 + 국내 5개 사업장</div>
+      </div>
+      <div class="card">
+        <div class="card-label">대표이사</div>
+        <div class="card-value blue" style="font-size:22px; padding-top:6px">이준혁</div>
+        <div class="card-desc">2025.02 창업주 유고 후 단독 대표 체제 확립</div>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-2 reveal" style="margin-top:64px; margin-bottom:48px">
+      <div class="card">
+        <div class="card-label" style="margin-bottom:24px; font-size:16px; font-weight:700; letter-spacing:0; color:var(--text)">2025년 매출 구성</div>
+        <div id="rev-chart" style="height:240px; position:relative; display:flex; align-items:flex-end; gap:8px; padding-bottom:0"></div>
+        <p class="source-note">출처: 동진쎄미켐 제53기 사업보고서 (2026.03.19, DART)</p>
+      </div>
+      <div class="card">
+        <div class="card-label" style="margin-bottom:24px; font-size:16px; font-weight:700; letter-spacing:0; color:var(--text)">사업부문별 가동률</div>
+        <div style="padding-top:12px">
+          <div class="pbar-row">
+            <span class="pbar-label">반도체 전자재료 (발안)</span>
+            <div class="pbar-track"><div class="pbar-fill" data-pct="97.3" style="background:var(--accent); width:0%"></div></div>
+            <span class="pbar-val">97.3%</span>
+          </div>
+          <div class="pbar-row">
+            <span class="pbar-label">디스플레이 전자재료</span>
+            <div class="pbar-track"><div class="pbar-fill" data-pct="39.3" style="background:var(--accent3); width:0%"></div></div>
+            <span class="pbar-val">39.3%</span>
+          </div>
+          <div class="pbar-row">
+            <span class="pbar-label">발포제 (시화)</span>
+            <div class="pbar-track"><div class="pbar-fill" data-pct="29.5" style="background:var(--text-dim); width:0%"></div></div>
+            <span class="pbar-val">29.5%</span>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--text-dim); margin-top:20px; line-height:1.6">발안공장 반도체 라인 97.3% 풀가동 — CAPA 확대 없이 추가 수주 불가 / 화성동진산업단지 3단지 증설 진행 중</p>
+        <p class="source-note">출처: 동진쎄미켐 제53기 사업보고서</p>
+      </div>
+    </div>
+
+    <!-- 연혁 -->
+    <div class="reveal" style="margin-top:64px">
+      <h3 style="font-family:var(--display); font-size:24px; margin-bottom:40px; color:var(--text-mid); font-weight:300">주요 연혁</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1967</div><div class="tl-content"><strong>동진화학공업사 설립</strong> — 이부섭 창업주, 자택 연탄창고에서 창업</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1968</div><div class="tl-content"><strong>발포제 국내 최초 개발</strong> — 전량 일본 수입품 국산화 성공</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1989</div><div class="tl-content"><strong>포토레지스트 세계 4번째 독자 개발</strong> — 미국·독일·일본에 이어 KrF PR 개발</div></div>
+        <div class="tl-item"><div class="tl-dot amber"></div><div class="tl-year">2021</div><div class="tl-content"><strong>EUV PR 국산화 성공</strong> — 일본 수출규제 대응, 국내 최초 / 2022년 삼성 메모리 양산라인 투입</div></div>
+        <div class="tl-item"><div class="tl-dot green"></div><div class="tl-year">2024</div><div class="tl-content"><strong>미국 황산 공장 가동</strong> (DSM Semichem, 플레인뷰) — EUV PR 삼성 파운드리 공급 개시</div></div>
+        <div class="tl-item"><div class="tl-dot amber"></div><div class="tl-year">2025</div><div class="tl-content"><strong>발포제 물적분할</strong>(→ 동진이노켐) / <strong>중국 10개 법인 매각 결정</strong> / 창업주 이부섭 유고 → 이준혁 단독 대표</div></div>
+        <div class="tl-item"><div class="tl-dot green"></div><div class="tl-year">2026</div><div class="tl-content"><strong>미국 신너 공장 샘플 출하 예정</strong> (킬린) — 전자재료 전문기업으로 사업 완전 재편</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FINANCIALS -->
+<section id="financials">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">재무 <span>현황</span></h2>
+    </div>
+
+    <div class="card-grid card-grid-3 reveal">
+      <div class="card">
+        <div class="card-label">2025 매출액 (연결)</div>
+        <div class="card-value blue">1조 1,941억</div>
+        <div class="card-desc">전년(1조 1,128억) 대비 +7.3%<br>3년 연속 성장세</div>
+      </div>
+      <div class="card">
+        <div class="card-label">2025 영업이익</div>
+        <div class="card-value amber">1,724억</div>
+        <div class="card-desc">영업이익률 14.4%<br>전년(1,754억) 대비 소폭 감소</div>
+      </div>
+      <div class="card">
+        <div class="card-label">2025 연결 순이익</div>
+        <div class="card-value red">941억</div>
+        <div class="card-desc">계속영업 580억 + 중단영업 361억<br>기타영업외손실 506억(중국) 반영</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:1px">
+      <div class="card-grid card-grid-4">
+        <div class="card">
+          <div class="card-label">자산총계</div>
+          <div class="card-value" style="font-size:26px">2조 61억</div>
+          <div class="card-desc">매각예정자산 3,556억 포함</div>
+        </div>
+        <div class="card">
+          <div class="card-label">자본총계</div>
+          <div class="card-value green" style="font-size:26px">1조 1,016억</div>
+          <div class="card-desc">이익잉여금 8,616억 (YoY +860억)</div>
+        </div>
+        <div class="card">
+          <div class="card-label">차입금+리스</div>
+          <div class="card-value amber" style="font-size:26px">6,680억</div>
+          <div class="card-desc">전년(7,921억) 대비 1,241억 감소</div>
+        </div>
+        <div class="card">
+          <div class="card-label">현금성자산</div>
+          <div class="card-value blue" style="font-size:26px">3,719억</div>
+          <div class="card-desc">자본조달비율 21.18% (↓26.86%)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:64px">
+      <h3 style="font-family:var(--display); font-size:24px; margin-bottom:32px; font-weight:300">3개년 손익 추이</h3>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead><tr>
+            <th>항목 (억원)</th><th>2023 (제51기)</th><th>2024 (제52기)</th><th>2025 (제53기)</th><th>YoY</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>매출액</td><td>10,097</td><td>11,128</td><td>11,941</td><td><span class="pill pill-green">+7.3%</span></td></tr>
+            <tr><td>영업이익</td><td>1,488</td><td>1,754</td><td>1,724</td><td><span class="pill pill-red">▼1.7%</span></td></tr>
+            <tr><td>영업이익률</td><td>14.7%</td><td>15.8%</td><td>14.4%</td><td><span class="pill pill-amber">▼1.4%p</span></td></tr>
+            <tr><td>계속영업 순이익</td><td>1,058</td><td>1,193</td><td>580</td><td><span class="pill pill-red">▼51.4%</span></td></tr>
+            <tr><td>연결 총 순이익</td><td>1,235</td><td>1,435</td><td>941</td><td><span class="pill pill-red">▼34.4%</span></td></tr>
+            <tr><td>R&D 비용</td><td>548</td><td>607</td><td>659</td><td><span class="pill pill-green">+8.6%</span></td></tr>
+            <tr><td>R&D/매출 비율</td><td>5.43%</td><td>5.45%</td><td>5.52%</td><td><span class="pill pill-green">+0.07%p</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note">※ 2025년 계속영업 순이익 급감 주요인: 중국 법인 매각 관련 기타영업외손실 506억원 및 스웨덴 법인 손실 405억원 반영 | 출처: 동진쎄미켐 제53기 사업보고서</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PR TECHNOLOGY -->
+<section id="pr-tech">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">포토레지스트 <span>기술 심층</span></h2>
+    </div>
+
+    <div class="signal-box reveal" style="margin-bottom:48px">
+      <p class="signal-text">
+        1989년 <strong>세계 4번째 독자 개발</strong>, 2022년 <strong>EUV PR 국산화</strong>까지 — M&A도 기술이전도 없이, 오직 원천기술 개발로만 쌓아온 35년의 포토레지스트 역사
+      </p>
+    </div>
+
+    <div class="reveal" style="margin-bottom:64px">
+      <h3 style="font-family:var(--display); font-size:20px; margin-bottom:24px; color:var(--text-mid); font-weight:300">세대별 기술 계보</h3>
+      <div class="pr-ladder">
+        <div class="pr-rung" style="background:var(--surface2); border-bottom:1px solid var(--accent)">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em">세대</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em">파장</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em">적용 공정</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em">동진쎄미켐 지위</div>
+        </div>
+        <div class="pr-rung">
+          <div class="pr-gen">KrF<div style="font-family:var(--serif);font-size:11px;color:var(--text-dim);font-weight:400;margin-top:3px">불화크립톤</div></div>
+          <div class="pr-nm">248nm</div>
+          <div class="pr-desc">3D NAND, 레거시 공정</div>
+          <div class="pr-status"><span class="pill pill-green">세계 1위</span></div>
+        </div>
+        <div class="pr-rung">
+          <div class="pr-gen">ArF Dry<div style="font-family:var(--serif);font-size:11px;color:var(--text-dim);font-weight:400;margin-top:3px">불화아르곤 건식</div></div>
+          <div class="pr-nm">193nm</div>
+          <div class="pr-desc">40nm 이상 로직</div>
+          <div class="pr-status"><span class="pill pill-blue">양산 중</span></div>
+        </div>
+        <div class="pr-rung">
+          <div class="pr-gen">ArF Immersion<div style="font-family:var(--serif);font-size:11px;color:var(--text-dim);font-weight:400;margin-top:3px">불화아르곤 액침</div></div>
+          <div class="pr-nm">193nm</div>
+          <div class="pr-desc">7~14nm 로직·DRAM</div>
+          <div class="pr-status"><span class="pill pill-blue">삼성 파운드리 공급</span></div>
+        </div>
+        <div class="pr-rung active">
+          <div class="pr-gen">EUV<div style="font-family:var(--serif);font-size:11px;color:var(--text-dim);font-weight:400;margin-top:3px">극자외선</div></div>
+          <div class="pr-nm">13.5nm</div>
+          <div class="pr-desc">7nm 이하 메모리·로직 / 삼성 3nm GAA 파운드리</div>
+          <div class="pr-status"><span class="pill pill-green">국내 최초 국산화</span><span class="pill pill-blue" style="margin-top:4px">삼성·SK 공급</span></div>
+        </div>
+        <div class="pr-rung">
+          <div class="pr-gen">하이 NA EUV<div style="font-family:var(--serif);font-size:11px;color:var(--text-dim);font-weight:400;margin-top:3px">고개구수 극자외선</div></div>
+          <div class="pr-nm">13.5nm<br><span style="font-size:9px;color:var(--text-dim)">NA=0.55</span></div>
+          <div class="pr-desc">2nm 이하 초미세공정 — ASML 신장비 2026년 대량 양산 예상</div>
+          <div class="pr-status"><span class="pill pill-amber">개발 진행 중</span></div>
+        </div>
+      </div>
+      <p class="source-note">출처: 비즈니스포스트 2024.04.15 / 전자신문 2024.10 / 동진쎄미켐 제53기 사업보고서</p>
+    </div>
+
+    <!-- 건식PR 위협 -->
+    <div class="reveal" style="margin-top:64px">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--danger);letter-spacing:.1em">RISK ALERT</span>
+        <h3 style="font-family:var(--display); font-size:22px; font-weight:700">삼성전자의 두 가지 PR 공정 변화</h3>
+      </div>
+      <div class="card-grid card-grid-2">
+        <div class="card" style="border-top:2px solid var(--danger)">
+          <div class="card-label" style="color:var(--danger)">① 즉각적 위협 (2024~)</div>
+          <div style="font-weight:700; font-size:15px; margin-bottom:12px">NAND KrF PR 도포량 절반 감소</div>
+          <div class="card-desc" style="font-size:13px">삼성 9세대 3D NAND부터 PR 도포량 7~8cc → 4~4.5cc로 50% 절감. 동진쎄미켐 PR 매출 2,500억 중 삼성 NAND향 60% = 약 1,500억이 영향권. 이론상 최대 750억 매출 감소 가능성. 2025년 매출은 오히려 증가했으나 점진적으로 반영 전망</div>
+        </div>
+        <div class="card" style="border-top:2px solid var(--accent3)">
+          <div class="card-label" style="color:var(--accent3)">② 중장기 구조 위협 (2026~)</div>
+          <div style="font-weight:700; font-size:15px; margin-bottom:12px">삼성 1c D램 건식 PR 도입</div>
+          <div class="card-desc" style="font-size:13px">삼성전자 6세대(1c) D램에 램리서치 건식 PR 업계 최초 적용(2025.06 확인). 기체 증착 방식으로 습식 PR 대비 소재 낭비 없음. 소재 공급자가 램리서치(장비사)로 동진쎄미켐 원천적 진입 불가. 양산은 2026년 본격화 예정</div>
+        </div>
+      </div>
+
+      <!-- EUV vs competitors -->
+      <div style="margin-top:48px">
+        <h3 style="font-family:var(--display); font-size:20px; margin-bottom:24px; font-weight:300">글로벌 EUV PR 경쟁사 비교</h3>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th>기업</th><th>국가</th><th>글로벌 지위</th><th>EUV PR 강점</th><th>동진쎄미켐 대비</th>
+            </tr></thead>
+            <tbody>
+              <tr><td>JSR Corporation</td><td>일본</td><td><span class="pill pill-red">글로벌 1위 (22~30%)</span></td><td>EUV CAR 최다 레시피, 삼성·TSMC·인텔 납품. 2023년 일본 정부 국유화</td><td>최대 직접 경쟁자</td></tr>
+              <tr><td>TOK (Tokyo Ohka)</td><td>일본</td><td><span class="pill pill-amber">글로벌 2위</span></td><td>ArF·EUV PR 균형 포트폴리오, TSMC 주요 공급사</td><td>삼성 파운드리 공동 공급사</td></tr>
+              <tr><td>Shin-Etsu Chemical</td><td>일본</td><td><span class="pill pill-amber">글로벌 3위권</span></td><td>대만 현지 생산으로 공급망 안정화, 낮은 LER CAR 특화</td><td>삼성 파운드리 공동 공급사</td></tr>
+              <tr><td>Inpria (Merck 인수)</td><td>미국</td><td><span class="pill pill-blue">MOR 선두</span></td><td>TSMC와 협력, 무기물 금속 산화물 레지스트 선행 상용화</td><td>하이NA EUV 시장의 강력 경쟁자</td></tr>
+              <tr><td style="color:var(--accent)">동진쎄미켐</td><td>한국</td><td><span class="pill pill-dim">글로벌 7~8위권</span></td><td>KrF PR 세계 1위 / EUV PR 국내 유일 양산 / 삼성 전략적 투자자(4.8%)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">※ JSR 일본 정부 국유화(2023) → 삼성의 JSR 의존도 축소 필요성 증대 → 동진쎄미켐 공급 물량 확대 기회 | 출처: GML Insights 2025 / 더벨 2024.02 / Mordor Intelligence 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. US OPERATIONS -->
+<section id="us-ops">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">미국 텍사스 <span>2개 공장</span></h2>
+    </div>
+
+    <div class="card-grid card-grid-1 reveal" style="margin-bottom:1px">
+      <div class="card" style="border-top:2px solid var(--accent)">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:20px">DSM SEMICHEM LLC · 플레인뷰(PLAINVIEW), TX</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+          <div>
+            <div style="font-size:22px; font-weight:700; margin-bottom:8px">고순도 황산 (ELSA)</div>
+            <div style="font-size:13px; color:var(--text-mid); margin-bottom:24px">Electronic-Level Sulfuric Acid — 반도체 웨이퍼 세정용</div>
+          </div>
+          <div></div>
+        </div>
+        <table class="kv-table">
+          <tr><td>합작 구조</td><td>동진쎄미켐(70%) + 삼성물산(판매) + Martin Midstream(원료)</td></tr>
+          <tr><td>가동 시점</td><td>2024년 8월 본격 가동 (1단계 24,000톤/년)</td></tr>
+          <tr><td>증설 후 캐파</td><td>~48,000톤/년 (TSIF 보조금 787만 달러 수령)</td></tr>
+          <tr><td>총 투자</td><td>1억 7,600만 달러 (~2,580억원)</td></tr>
+          <tr><td>주요 고객</td><td>삼성 테일러 파운드리 · TI · 텍사스 현지 팹</td></tr>
+          <tr><td>매출 전망</td><td>2026년 본격 양산 매출 개시 예정</td></tr>
+        </table>
+      </div>
+      <div class="card" style="border-top:2px solid var(--accent2)">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);letter-spacing:.1em;margin-bottom:20px">DONGJIN SEMICHEM TEXAS, INC. · 킬린(KILLEEN), TX</div>
+        <div style="font-size:22px; font-weight:700; margin-bottom:8px">초고순도 PR 신너</div>
+        <div style="font-size:13px; color:var(--text-mid); margin-bottom:24px">Ultra-High-Purity Photoresist Thinner — 텍사스주 최초 생산</div>
+        <table class="kv-table">
+          <tr><td>법인 구조</td><td>동진쎄미켐 단독 100% (DONGJIN USA INC. 자회사)</td></tr>
+          <tr><td>입지 전략</td><td>삼성 테일러 파운드리에서 차로 40분 — 직납 물류 최적화</td></tr>
+          <tr><td>총 투자</td><td>1억 1,000만 달러 (~1,600억원) / 6개 동 시설</td></tr>
+          <tr><td>정부 지원</td><td>TSIF 보조금 240만 달러 (소재사 중 유일 수혜)</td></tr>
+          <tr><td>TSIC EC</td><td>텍사스 반도체혁신컨소시엄 위원 — 반도체 소재사 중 유일</td></tr>
+          <tr><td>매출 전망</td><td>2026년 2분기 삼성 테일러향 평가 샘플 출하 예정</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="signal-box reveal" style="margin-top:48px">
+      <p class="signal-text">
+        "2026년이 승부처" — 두 텍사스 공장의 <strong>첫 의미있는 매출 발표</strong>가 나오는 시점이 동진쎄미켐 주가 재평가의 핵심 트리거
+      </p>
+      <p class="source-note">출처: 아시아경제 2025.11.25 / Area Development 2025.02.15</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CHINA + BATTERY -->
+<section>
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">05</span>
+      <h2 class="section-title">사업 <span>구조 재편</span></h2>
+    </div>
+
+    <div class="card-grid card-grid-2 reveal">
+      <div class="card">
+        <div class="card-label">중국 10개 법인 매각 — 배경</div>
+        <div style="margin-top:16px; display:flex; flex-direction:column; gap:16px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--accent);flex-shrink:0;padding-top:2px">①</span>
+            <div><strong style="font-size:13px">미·중 반도체 갈등 심화</strong><div style="font-size:12px;color:var(--text-mid);margin-top:4px">미국 수출통제 강화 → 미국 파트너십 유지 위해 '중국 연루' 리스크 사전 해소 필요</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--accent);flex-shrink:0;padding-top:2px">②</span>
+            <div><strong style="font-size:13px">중국 디스플레이 내재화 가속</strong><div style="font-size:12px;color:var(--text-mid);margin-top:4px">BOE·CSOT의 자국산 조달 확대 → 중국 법인 수익성 지속 하락·일부 적자 전환</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--accent);flex-shrink:0;padding-top:2px">③</span>
+            <div><strong style="font-size:13px">자원 재배분 전략</strong><div style="font-size:12px;color:var(--text-mid);margin-top:4px">확보 자금을 미국 텍사스·EUV PR 개발에 집중 투자 — '선택과 집중'</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--accent);flex-shrink:0;padding-top:2px">④</span>
+            <div><strong style="font-size:13px">미국 보조금 수혜 최적화</strong><div style="font-size:12px;color:var(--text-mid);margin-top:4px">TSIC EC 보조금 수령 요건 충족 위해 중국 사업 비중 축소 사실상 필수</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">이차전지 — 노스볼트 파산 이후</div>
+        <div style="margin-top:8px">
+          <div style="padding:16px; background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.2); margin-bottom:16px; border-radius:2px">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--danger);letter-spacing:.1em;margin-bottom:4px">NORTHVOLT BANKRUPT 2025.03</div>
+            <div style="font-size:13px;color:var(--text-mid)">2020년 체결한 10년 장기 공급계약 사실상 무효화 — 스웨덴 법인 연 7,000억 기대 매출 물거품 / 2025년 순손실 405억원</div>
+          </div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">고객 다각화 현황</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:12px">삼성SDI (국내·헝가리)</span><span class="pill pill-green">현재 주력</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:12px">미국 도전재 공장 (인디애나 유력)</span><span class="pill pill-blue">검토 중</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:12px">LFP ESS용 CNT 도전재 신제품</span><span class="pill pill-amber">개발 완료</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
+              <span style="font-size:12px">그래핀·CNT 복합 도전재</span><span class="pill pill-dim">개발 중</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. RISKS & OPPORTUNITIES -->
+<section id="risks">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">06</span>
+      <h2 class="section-title">기회와 <span>리스크</span></h2>
+    </div>
+
+    <div class="risk-grid reveal">
+      <!-- 왼쪽: 기회 -->
+      <div class="risk-col-opp">
+        <div class="risk-col-header">
+          <div class="risk-col-dot"></div>
+          <span class="risk-col-header-label">기회</span>
+        </div>
+        <div class="risk-card">
+          <div class="risk-header">
+            <div class="risk-icon pos">🚀</div>
+            <div class="risk-title">EUV PR 파운드리 확장</div>
+          </div>
+          <div class="risk-body">2025년 2월 삼성 3nm GAA 파운드리 EUV PR 공급 공식 개시. 하이 NA EUV PR 개발 완료(2025 목표) → 파운드리 물량 가시화 시 매출 급성장 기대</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-header">
+            <div class="risk-icon pos">🇺🇸</div>
+            <div class="risk-title">미국 온쇼어링 수혜</div>
+          </div>
+          <div class="risk-body">삼성 테일러 파운드리 양산 + TSIC EC 위원 지위 + TSIF 보조금 수혜 → 텍사스 2개 공장 2026년 본격 매출 예정. 미국 반도체 공급망 핵심 소재사 포지셔닝</div>
+        </div>
+        <div class="risk-card" style="border-bottom:none">
+          <div class="risk-header">
+            <div class="risk-icon pos">⚡</div>
+            <div class="risk-title">JSR 국유화 반사이익</div>
+          </div>
+          <div class="risk-body">일본 정부의 JSR 국유화(2023) → 삼성전자의 JSR 의존도 축소 필요성 증대 → 동진쎄미켐 EUV PR 공급 물량 확대 기회. 공급망 다변화 트렌드의 최대 수혜 후보</div>
+        </div>
+      </div>
+      <!-- 오른쪽: 리스크 -->
+      <div class="risk-col-risk">
+        <div class="risk-col-header">
+          <div class="risk-col-dot"></div>
+          <span class="risk-col-header-label">리스크</span>
+        </div>
+        <div class="risk-card">
+          <div class="risk-header">
+            <div class="risk-icon neg">⚠️</div>
+            <div class="risk-title">NAND KrF PR 도포량 감소</div>
+          </div>
+          <div class="risk-body">삼성 9세대 3D NAND부터 PR 도포량 50% 절감. 연간 최대 750억원 매출 감소 가능성. 2025년은 증가했으나 향후 수년간 점진적 반영 예상</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-header">
+            <div class="risk-icon neg">🔬</div>
+            <div class="risk-title">건식 PR 중장기 구조 위협</div>
+          </div>
+          <div class="risk-body">삼성 1c D램 건식 PR 도입(2025.06 확인). 램리서치 독점 공급 구조로 동진쎄미켐 원천적 진입 불가. 2026년 양산 본격화 이후 장기 리스크 확대 가능성</div>
+        </div>
+        <div class="risk-card" style="border-bottom:none">
+          <div class="risk-header">
+            <div class="risk-icon neg">🌐</div>
+            <div class="risk-title">고객 집중 · 노스볼트 손실</div>
+          </div>
+          <div class="risk-body">삼성전자 단일 고객 비중 59.14%. 스웨덴 법인 순손실 405억원 + 중국 매각 손익 불확실성. 이준혁 단독 대표 체제 안착 여부 모니터링 필요</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. VALUATION -->
+<section id="valuation">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <span class="section-num">07</span>
+      <h2 class="section-title">주가 <span>밸류에이션</span></h2>
+    </div>
+
+    <div class="val-grid reveal">
+      <div class="val-cell highlight">
+        <div class="val-company" style="color:var(--accent)">동진쎄미켐 <span style="font-family:var(--mono);font-size:11px;color:var(--accent2)">005290</span></div>
+        <div class="val-row"><div class="val-key">주요 제품</div><div style="font-size:12px;color:var(--text-mid)">PR / Wet Chem</div></div>
+        <div class="val-row"><div class="val-key">PER</div><div class="val-num" style="color:var(--danger)">24.5배</div></div>
+        <div class="val-row"><div class="val-key">PBR</div><div class="val-num">~2.4배</div></div>
+        <div class="val-row"><div class="val-key">시총</div><div class="val-num" style="font-size:14px">~2.6조</div></div>
+        <div style="margin-top:12px"><span class="pill pill-amber">업종 내 프리미엄</span></div>
+      </div>
+      <div class="val-cell">
+        <div class="val-company">솔브레인 <span style="font-family:var(--mono);font-size:11px;color:var(--text-dim)">357780</span></div>
+        <div class="val-row"><div class="val-key">주요 제품</div><div style="font-size:12px;color:var(--text-mid)">식각액·전구체</div></div>
+        <div class="val-row"><div class="val-key">PER</div><div class="val-num" style="color:var(--green)">~11~13배</div></div>
+        <div class="val-row"><div class="val-key">PBR</div><div class="val-num" style="color:var(--green)">~1.2배</div></div>
+        <div class="val-row"><div class="val-key">시총</div><div class="val-num" style="font-size:14px">~2.8조</div></div>
+        <div style="margin-top:12px"><span class="pill pill-green">업종 내 저평가</span></div>
+      </div>
+      <div class="val-cell">
+        <div class="val-company">이엔에프테크 <span style="font-family:var(--mono);font-size:11px;color:var(--text-dim)">102460</span></div>
+        <div class="val-row"><div class="val-key">주요 제품</div><div style="font-size:12px;color:var(--text-mid)">신너·박리액</div></div>
+        <div class="val-row"><div class="val-key">PER</div><div class="val-num">~15배</div></div>
+        <div class="val-row"><div class="val-key">PBR</div><div class="val-num">~1.0배</div></div>
+        <div class="val-row"><div class="val-key">시총</div><div class="val-num" style="font-size:14px">~5,000억</div></div>
+        <div style="margin-top:12px"><span class="pill pill-dim">적정 수준</span></div>
+      </div>
+      <div class="val-cell">
+        <div class="val-company">한솔케미칼 <span style="font-family:var(--mono);font-size:11px;color:var(--text-dim)">014680</span></div>
+        <div class="val-row"><div class="val-key">주요 제품</div><div style="font-size:12px;color:var(--text-mid)">과산화수소·전구체</div></div>
+        <div class="val-row"><div class="val-key">PER</div><div class="val-num">~18배</div></div>
+        <div class="val-row"><div class="val-key">PBR</div><div class="val-num">~1.3배</div></div>
+        <div class="val-row"><div class="val-key">시총</div><div class="val-num" style="font-size:14px">~1.0조</div></div>
+        <div style="margin-top:12px"><span class="pill pill-dim">적정 수준</span></div>
+      </div>
+      <div class="val-cell">
+        <div class="val-company">후성 <span style="font-family:var(--mono);font-size:11px;color:var(--text-dim)">093370</span></div>
+        <div class="val-row"><div class="val-key">주요 제품</div><div style="font-size:12px;color:var(--text-mid)">HF·불화물계</div></div>
+        <div class="val-row"><div class="val-key">PER</div><div class="val-num">~20배</div></div>
+        <div class="val-row"><div class="val-key">PBR</div><div class="val-num" style="color:var(--green)">~0.8배</div></div>
+        <div class="val-row"><div class="val-key">시총</div><div class="val-num" style="font-size:14px">~5,000억</div></div>
+        <div style="margin-top:12px"><span class="pill pill-dim">적정 수준</span></div>
+      </div>
+    </div>
+
+    <div class="signal-box reveal" style="margin-top:48px">
+      <p class="signal-text">
+        동진쎄미켐은 업종 내 경쟁사 대비 <strong>PER 2~3배 프리미엄</strong>으로 거래 중. EUV PR 확장과 미국 공장 가동이라는 <strong>성장 기대치를 선반영</strong>한 결과이나, 2025년 계속영업 순이익 51% 급감과 NAND PR 물량 감소라는 <strong>실적 하방 압력</strong>을 감안하면 성장 스토리의 구체화 속도가 관건
+      </p>
+    </div>
+
+    <div class="reveal" style="margin-top:48px">
+      <h3 style="font-family:var(--display); font-size:20px; margin-bottom:24px; font-weight:300">주가 재평가 트리거</h3>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead><tr><th>시기</th><th>트리거</th><th>방향성</th></tr></thead>
+          <tbody>
+            <tr><td>2026년 상반기</td><td>미국 킬린 신너 공장 — 삼성 테일러향 샘플 출하 및 첫 매출 발표</td><td><span class="pill pill-green">↑ 긍정</span></td></tr>
+            <tr><td>2026년 상반기</td><td>중국 10개 법인 매각 완료 → 손익 일회성 반영 + 재무 구조 정상화</td><td><span class="pill pill-blue">↑ 중립~긍정</span></td></tr>
+            <tr><td>2026년 내</td><td>하이 NA EUV PR 개발 완료 공식 발표 + 고객사 샘플 테스트</td><td><span class="pill pill-green">↑ 강한 긍정</span></td></tr>
+            <tr><td>지속 모니터링</td><td>삼성 NAND KrF PR 물량 추가 감소 폭 / 건식 PR 채택 확산 속도</td><td><span class="pill pill-red">↓ 부정</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note">출처: 동진쎄미켐 제53기 사업보고서 / 아시아경제 2025.11.25 / 더벨 2024.02 / 전자신문 2024.10 / 비즈니스포스트 2024.04.15</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrapper">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">동진쎄미켐</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:4px">기업분석 리포트 · 2025 FY</div>
+      </div>
+      <div class="footer-disclaimer">
+        본 자료는 공개된 사업보고서, 뉴스 기사, 증권사 리포트를 바탕으로 작성된 분석용 참고자료입니다. 투자 권유가 아니며, 투자 판단 및 손익에 대한 책임은 투자자 본인에게 있습니다.<br><br>
+        주요 출처: 동진쎄미켐 제53기 사업보고서(DART) · 비즈니스포스트 · 전자신문 · 아시아경제 · Area Development · 더벨
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── REVENUE BAR CHART ──
+// 출처: 동진쎄미켐 제53기 사업보고서 (단위: 백만원, 연결기준, 계속영업)
+// 반도체 784,559 / 디스플레이 308,920 / 발포제 83,790 / 이차전지 15,423 / 정제유 807 / 기타 646
+const revData = [
+  { label: '반도체', val: 784559, color: '#3b82f6' },
+  { label: '디스플레이', val: 308920, color: '#06b6d4' },
+  { label: '발포제', val: 83790, color: '#64748b' },
+  { label: '이차전지', val: 15423, color: '#f59e0b' },
+  { label: '정제유', val: 807, color: '#475569' },
+  { label: '기타', val: 646, color: '#334155' },
+];
+const max = Math.max(...revData.map(d => d.val));
+const chart = document.getElementById('rev-chart');
+if (chart) {
+  revData.forEach(d => {
+    const pct = (d.val / max) * 160;
+    // 백만원 → 억원: ÷100
+    const billVal = d.val / 100;
+    const dispVal = billVal >= 100
+      ? Math.round(billVal).toLocaleString() + '억'
+      : billVal >= 10
+        ? billVal.toFixed(0) + '억'
+        : billVal.toFixed(1) + '억';
+    const col = document.createElement('div');
+    col.style.cssText = `display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;justify-content:flex-end;height:100%`;
+    col.innerHTML = `
+      <div class="bar-anim" style="width:100%;background:${d.color};border-radius:2px 2px 0 0;height:0px;transition:height 1.2s cubic-bezier(.4,0,.2,1)" data-h="${pct}px"></div>
+      <div style="font-family:var(--mono);font-size:13px;color:var(--text);text-align:center;font-weight:500">${dispVal}</div>
+      <div style="font-family:var(--serif);font-size:12px;color:var(--text-mid);text-align:center;word-break:keep-all;font-weight:500">${d.label}</div>
+    `;
+    chart.appendChild(col);
+  });
+}
+
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => io.observe(el));
+
+// ── PROGRESS BARS ──
+const pbars = document.querySelectorAll('.pbar-fill');
+const pbarObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const pct = e.target.dataset.pct;
+      setTimeout(() => { e.target.style.width = pct + '%'; }, 200);
+      pbarObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+pbars.forEach(pb => pbarObs.observe(pb));
+
+// ── REVENUE BARS ──
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.bar-anim').forEach((b, i) => {
+        setTimeout(() => { b.style.height = b.dataset.h; }, i * 80);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+if (chart) barObs.observe(chart);
+
+// ── SMOOTH NAV HIGHLIGHT ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--text)' : '';
+    a.style.borderBottomColor = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : 'transparent';
+  });
+});
+
+// ── COUNTER ANIMATION ──
+function animCount(el, target, suffix='') {
+  let start = 0;
+  const dur = 1400;
+  const step = (ts) => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(ease * target).toLocaleString() + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+</script>
+</body>
+</html>
